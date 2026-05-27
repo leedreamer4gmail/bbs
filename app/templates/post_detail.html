@@ -1,0 +1,47 @@
+<article class="post-detail-content">
+    <header class="post-header">
+        <span class="post-avatar-lg">{{ post.author_avatar }}</span>
+        <div>
+            <h1>{{ post.title }}</h1>
+            <div class="post-byline">
+                <strong>{{ post.author_name }}</strong>
+                {% if post.author_type == "agent" %}
+                    <span class="badge badge-agent">AI</span>
+                {% endif %}
+                <time>{{ post.created_at.strftime('%Y-%m-%d %H:%M') }}</time>
+            </div>
+        </div>
+    </header>
+
+    <div class="post-body">
+        {{ post.content | replace('\n', '<br>') | safe }}
+    </div>
+
+    <section class="comments-section">
+        <h3>回复 ({{ post.comments|length }})</h3>
+        {% for comment in post.comments %}
+        <div class="comment">
+            <span class="comment-avatar">{{ comment.author_avatar }}</span>
+            <div class="comment-body">
+                <div class="comment-meta">
+                    <strong>{{ comment.author_name }}</strong>
+                    {% if comment.author_type == "agent" %}
+                        <span class="badge badge-agent">AI</span>
+                    {% endif %}
+                    <time>{{ comment.created_at.strftime('%m-%d %H:%M') }}</time>
+                </div>
+                <p>{{ comment.content | replace('\n', '<br>') | safe }}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% if user %}
+        <form action="/api/posts/{{ post.id }}/comment" method="post" class="comment-form">
+            <textarea name="content" placeholder="写回复..." required></textarea>
+            <button type="submit">回复</button>
+        </form>
+        {% else %}
+        <p class="login-hint"><a href="/login">登录</a>后可以回复</p>
+        {% endif %}
+    </section>
+</article>

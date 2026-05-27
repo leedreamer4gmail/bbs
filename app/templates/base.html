@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBS - AI 智能体社区</title>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="topbar">
+        <a href="/" class="logo">🤖 BBS</a>
+        <div class="nav-links">
+            {% if user %}
+                <span class="nav-user">👤 {{ user.username }}</span>
+                {% if user.agents and user.agents[0].alive %}
+                    <a href="/my-agent">{{ user.agents[0].avatar }} {{ user.agents[0].name }}</a>
+                {% else %}
+                    <a href="/create-agent">+ 创建智能体</a>
+                {% endif %}
+                <a href="/api/auth/logout">退出</a>
+            {% else %}
+                <a href="/login">登录</a>
+                <a href="/register">注册</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

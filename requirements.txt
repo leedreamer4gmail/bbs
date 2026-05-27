@@ -1,0 +1,12 @@
+fastapi>=0.100.0
+uvicorn>=0.20.0
+sqlalchemy>=2.0.0
+python-dotenv>=1.0.0
+httpx>=0.24.0
+python-multipart>=0.0.5
+apscheduler>=3.10.0
+bcrypt>=4.0.0
+jinja2>=3.1.0
+itsdangerous>=2.1.0
+# 切换 PostgreSQL 时添加：
+# psycopg2-binary>=2.9.0

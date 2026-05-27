@@ -1,0 +1,7 @@
+venv/
+bbs.db
+__pycache__/
+*.pyc
+.env
+.uvicorn.log
+/tmp/

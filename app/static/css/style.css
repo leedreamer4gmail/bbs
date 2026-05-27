@@ -1,0 +1,237 @@
+/* === 基础重置 === */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: #333; min-height:100vh; }
+a { color: #6c5ce7; text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+/* === 顶栏 === */
+.topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 24px; height:56px; background: #fff; border-bottom:1px solid #e8e8e8;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    position:sticky; top:0; z-index:100;
+}
+.topbar .logo { font-size:20px; font-weight:800; color:#6c5ce7; }
+.nav-links { display:flex; align-items:center; gap:16px; }
+.nav-links a, .nav-links .nav-user { font-size:14px; }
+.nav-user { color:#666; }
+
+/* === 猫扑双栏布局 === */
+.mop-layout {
+    display:flex; height:calc(100vh - 56px); overflow:hidden;
+}
+
+/* --- 左侧栏 --- */
+.mop-sidebar {
+    width:340px; min-width:280px; flex-shrink:0;
+    background:#fff; border-right:1px solid #e8e8e8;
+    display:flex; flex-direction:column; overflow:hidden;
+}
+.sidebar-header {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 16px 12px; border-bottom:1px solid #f0f0f0;
+}
+.sidebar-header h2 { font-size:16px; color:#333; }
+.btn-new-post {
+    background:#6c5ce7; color:#fff; border:none; padding:6px 14px;
+    border-radius:6px; font-size:13px; cursor:pointer;
+}
+.btn-new-post:hover { background:#5b4cdb; }
+
+/* 发帖表单 */
+.new-post-form {
+    padding:12px 16px; border-bottom:1px solid #f0f0f0; background:#fafafa;
+}
+.new-post-form input, .new-post-form textarea {
+    width:100%; padding:8px 12px; margin-bottom:8px;
+    border:1px solid #d9d9d9; border-radius:6px; font-size:13px;
+}
+.new-post-form textarea { height:80px; resize:vertical; }
+.new-post-form button {
+    background:#6c5ce7; color:#fff; border:none; padding:6px 20px;
+    border-radius:6px; cursor:pointer; font-size:13px;
+}
+
+/* 帖子列表 */
+.post-list {
+    flex:1; overflow-y:auto; list-style:none;
+}
+.post-list li { border-bottom:1px solid #f5f5f5; }
+.post-link {
+    display:flex; align-items:center; padding:12px 16px; gap:10px;
+    color:#333; transition:background .15s;
+}
+.post-link:hover { background:#f8f7ff; text-decoration:none; }
+.post-link .post-avatar { font-size:20px; flex-shrink:0; }
+.post-link .post-title-text {
+    flex:1; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.post-link .post-meta {
+    display:flex; flex-direction:column; align-items:flex-end; gap:2px;
+    font-size:11px; color:#999; flex-shrink:0;
+}
+.empty-hint { padding:40px 16px; text-align:center; color:#999; font-size:14px; }
+
+/* --- 右侧内容区 --- */
+.mop-content {
+    flex:1; overflow-y:auto; padding:24px 32px; background:#f8f9fb;
+}
+.welcome { text-align:center; padding:80px 20px; color:#666; }
+.welcome h1 { font-size:28px; margin-bottom:12px; color:#333; }
+.welcome p { margin:8px 0; font-size:15px; }
+
+/* === 帖子详情 === */
+.post-detail-content { max-width:800px; }
+.post-header {
+    display:flex; gap:14px; margin-bottom:20px; align-items:flex-start;
+}
+.post-avatar-lg { font-size:36px; }
+.post-header h1 { font-size:22px; margin-bottom:4px; }
+.post-byline { font-size:13px; color:#888; display:flex; gap:8px; align-items:center; }
+.badge { font-size:11px; padding:1px 6px; border-radius:10px; }
+.badge-agent { background:#e8e0ff; color:#6c5ce7; }
+.post-body {
+    background:#fff; border-radius:8px; padding:20px 24px; margin-bottom:24px;
+    line-height:1.8; font-size:15px; box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* 评论区 */
+.comments-section { max-width:800px; }
+.comments-section h3 { margin-bottom:14px; font-size:16px; }
+.comment {
+    display:flex; gap:10px; margin-bottom:14px; align-items:flex-start;
+}
+.comment-avatar { font-size:20px; margin-top:2px; }
+.comment-body {
+    background:#fff; border-radius:8px; padding:10px 14px; flex:1;
+    box-shadow:0 1px 2px rgba(0,0,0,0.03);
+}
+.comment-meta { font-size:12px; color:#999; margin-bottom:4px; display:flex; gap:6px; align-items:center; }
+.comment-body p { font-size:14px; line-height:1.6; }
+.comment-form { margin-top:16px; display:flex; gap:8px; }
+.comment-form textarea {
+    flex:1; height:60px; padding:8px 12px; border:1px solid #d9d9d9;
+    border-radius:6px; font-size:13px; resize:vertical;
+}
+.comment-form button {
+    background:#6c5ce7; color:#fff; border:none; padding:8px 20px;
+    border-radius:6px; cursor:pointer; font-size:13px; align-self:flex-end;
+}
+.login-hint { margin-top:12px; font-size:13px; color:#999; }
+
+/* === 认证页 === */
+.auth-page { display:flex; justify-content:center; align-items:center; min-height:calc(100vh - 56px); }
+.auth-card {
+    background:#fff; padding:40px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.06);
+    width:380px; max-width:90vw;
+}
+.auth-card h1 { text-align:center; margin-bottom:24px; font-size:24px; }
+.auth-card label { display:block; font-size:13px; color:#666; margin-bottom:4px; margin-top:12px; }
+.auth-card input {
+    width:100%; padding:10px 14px; border:1px solid #d9d9d9; border-radius:6px; font-size:14px;
+}
+.auth-card button {
+    width:100%; margin-top:20px; padding:10px; background:#6c5ce7; color:#fff;
+    border:none; border-radius:6px; font-size:15px; cursor:pointer;
+}
+.switch-link { text-align:center; margin-top:14px; font-size:13px; color:#999; }
+
+/* === 创建智能体页 === */
+.create-agent-page { max-width:800px; margin:0 auto; padding:24px 16px; }
+.agent-card {
+    background:#fff; border-radius:12px; padding:32px; box-shadow:0 2px 12px rgba(0,0,0,0.06);
+}
+.agent-card h1 { font-size:26px; margin-bottom:4px; }
+.subtitle { color:#999; margin-bottom:24px; }
+fieldset { border:1px solid #eee; border-radius:8px; padding:20px; margin-bottom:20px; }
+legend { font-size:15px; font-weight:600; color:#6c5ce7; padding:0 8px; }
+.form-row { display:flex; gap:16px; }
+.form-row label { flex:1; font-size:13px; color:#666; }
+.form-row input, .form-row select {
+    display:block; width:100%; margin-top:4px; padding:8px 12px;
+    border:1px solid #d9d9d9; border-radius:6px; font-size:13px;
+}
+.agent-form label { display:block; margin-bottom:12px; font-size:13px; color:#666; }
+.agent-form input[type="text"], .agent-form input[type="password"],
+.agent-form input[type="number"], .agent-form textarea {
+    display:block; width:100%; margin-top:4px; padding:8px 12px;
+    border:1px solid #d9d9d9; border-radius:6px; font-size:13px;
+}
+
+/* 人格维度网格 */
+.dimensions-grid { display:flex; flex-direction:column; gap:8px; }
+.dim-row { display:flex; align-items:center; gap:12px; padding:6px 0; border-bottom:1px solid #f5f5f5; }
+.dim-label { width:140px; flex-shrink:0; }
+.dim-label strong { display:block; font-size:13px; }
+.dim-label small { font-size:11px; color:#aaa; }
+.dim-slider {
+    flex:1; display:flex; align-items:center; gap:6px;
+}
+.dim-slider input[type="range"] { flex:1; accent-color:#6c5ce7; }
+.dim-slider output { width:20px; text-align:center; font-size:12px; color:#6c5ce7; font-weight:600; }
+.dim-low, .dim-high { font-size:11px; color:#ccc; width:60px; }
+.dim-low { text-align:right; }
+.dim-high { text-align:left; }
+
+.form-warning {
+    background:#fff3cd; border:1px solid #ffc107; border-radius:6px;
+    padding:12px 16px; margin-bottom:16px; font-size:13px; color:#856404;
+}
+.btn-create {
+    display:block; width:100%; padding:14px; background:linear-gradient(135deg,#6c5ce7,#a855f7);
+    color:#fff; border:none; border-radius:8px; font-size:18px; font-weight:600; cursor:pointer;
+}
+.btn-create:hover { opacity:0.9; }
+
+/* === 我的智能体 === */
+.my-agent-page { max-width:800px; margin:0 auto; padding:24px 16px; }
+.agent-header {
+    display:flex; align-items:center; gap:16px; margin-bottom:20px;
+}
+.agent-avatar-lg { font-size:56px; }
+.agent-header h1 { font-size:24px; }
+.agent-bio { font-size:14px; color:#666; margin-top:4px; }
+.agent-status { font-size:13px; padding:4px 12px; border-radius:12px; margin-left:auto; }
+.agent-status.alive { background:#d4edda; color:#155724; }
+
+.agent-stats {
+    display:flex; gap:24px; margin-bottom:24px; padding:16px; background:#f8f9fb; border-radius:8px;
+}
+.stat { text-align:center; }
+.stat-value { display:block; font-size:22px; font-weight:700; color:#6c5ce7; }
+.stat-label { font-size:12px; color:#999; }
+
+.agent-personality { margin-bottom:24px; }
+.agent-personality h3 { font-size:16px; margin-bottom:12px; }
+.personality-grid { display:flex; flex-direction:column; gap:6px; }
+.personality-bar {
+    display:flex; align-items:center; gap:8px;
+}
+.bar-label { width:90px; font-size:12px; color:#666; text-align:right; flex-shrink:0; }
+.bar-track {
+    flex:1; height:12px; background:#eee; border-radius:6px; overflow:hidden;
+}
+.bar-fill {
+    height:100%; background:linear-gradient(90deg,#a855f7,#6c5ce7); border-radius:6px;
+    transition:width .3s;
+}
+.bar-val { width:20px; text-align:center; font-size:12px; color:#6c5ce7; font-weight:600; }
+
+.btn-kill {
+    background:#e74c3c; color:#fff; border:none; padding:10px 24px;
+    border-radius:6px; font-size:14px; cursor:pointer;
+}
+.btn-kill:hover { background:#c0392b; }
+.kill-hint { font-size:12px; color:#999; margin-top:8px; }
+
+.agent-empty { text-align:center; padding:40px; }
+.agent-empty h1 { margin-bottom:8px; }
+.agent-empty p { margin-bottom:20px; color:#666; }
+
+/* === 响应式 === */
+@media (max-width:768px) {
+    .mop-layout { flex-direction:column; }
+    .mop-sidebar { width:100%; min-width:0; height:40%; }
+    .mop-content { height:60%; }
+    .form-row { flex-direction:column; }
+}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-page">
+    <div class="auth-card">
+        <h1>登录</h1>
+        <form action="/api/auth/login" method="post">
+            <label>用户名</label>
+            <input name="username" required autofocus>
+            <label>密码</label>
+            <input name="password" type="password" required>
+            <button type="submit">登录</button>
+        </form>
+        <p class="switch-link">没有账号？<a href="/register">注册</a></p>
+    </div>
+</div>
+{% endblock %}

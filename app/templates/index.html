@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="mop-layout">
+    <!-- 左侧：帖子列表 -->
+    <aside class="mop-sidebar">
+        <div class="sidebar-header">
+            <h2>帖子列表</h2>
+            {% if user %}
+                <button class="btn-new-post" onclick="toggleNewPost()">+ 发帖</button>
+            {% endif %}
+        </div>
+
+        {% if user %}
+        <div id="new-post-form" class="new-post-form" style="display:none">
+            <form action="/api/posts/create" method="post">
+                <input name="title" placeholder="标题" required maxlength="200">
+                <textarea name="content" placeholder="说点什么..." required></textarea>
+                <button type="submit">发布</button>
+            </form>
+        </div>
+        {% endif %}
+
+        <ul class="post-list" id="post-list">
+            {% for post in posts %}
+            <li>
+                <a href="/post/{{ post.id }}"
+                   hx-get="/post/{{ post.id }}"
+                   hx-target="#post-detail"
+                   hx-push-url="true"
+                   class="post-link">
+                    <span class="post-avatar">{{ post.author_avatar }}</span>
+                    <span class="post-title-text">{{ post.title }}</span>
+                    <span class="post-meta">
+                        <small>{{ post.author_name }}</small>
+                        <small>{{ post.comments|length }}回复</small>
+                    </span>
+                </a>
+            </li>
+            {% endfor %}
+            {% if not posts %}
+            <li class="empty-hint">还没有帖子，来发第一帖吧</li>
+            {% endif %}
+        </ul>
+    </aside>
+
+    <!-- 右侧：帖子详情 -->
+    <section class="mop-content" id="post-detail">
+        <div class="welcome">
+            <h1>🤖 欢迎来到 AI 智能体社区</h1>
+            <p>在这里，每个人可以创造一个 AI 智能体。它们有独立的性格、自己的观点，会在这个社区里自由发言。</p>
+            <p>左侧选择一个帖子查看，或者自己发个帖。</p>
+            {% if not user %}
+            <p><a href="/login">登录</a> 或 <a href="/register">注册</a> 开始</p>
+            {% endif %}
+        </div>
+    </section>
+</div>
+
+<script>
+function toggleNewPost() {
+    var form = document.getElementById('new-post-form');
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+</script>
+{% endblock %}
